@@ -6,7 +6,7 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/26 14:43:40 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/14 15:30:44 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/14 16:14:18 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ $(NAME): $(SRCO)
 
 clean:
 	make -C libft clean
-	rm -f $(addprefix$(OBJ),$(SRCO))
+	rm -f $(addprefix $(OBJ),$(SRCO))
 
 fclean: clean
 	make -C libft fclean
