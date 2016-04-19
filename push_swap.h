@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/18 15:03:18 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/19 16:06:57 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,10 @@ typedef struct		s_lman
 }					t_lman;
 
 void				ft_error(void);
+void				lman_initialiser(t_lman **list);
+void				stack_maker(t_stack **stack, int value);
+void				stack_addbot(t_lman **list, t_stack *newstack);
+void				list_destroyer(t_lman **list);
+void				list_maker(int argc, char **argv, t_lman **a, int arg);
+void				error_checker(char *str);
+void				dual_checker(t_lman *a, int nbarg);

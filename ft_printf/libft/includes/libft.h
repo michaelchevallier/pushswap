@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 17:42:19 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/12 15:38:45 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/19 16:29:35 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void			ft_bzero(void *s, size_t n);
 int				clean_open(const char *path, int flag);
 int				clean_read(int fildes, char *buf, size_t nbyte);
 int				ft_countwords(const char *s, char c);
+intmax_t		ft_intmaxatoi(const char *str);
 intmax_t		ft_intmaxuatoi(const unsigned char *str);
 int				ft_isalnum(int c);
 int				ft_isalpha(int c);

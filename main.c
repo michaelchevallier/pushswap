@@ -6,41 +6,27 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:32:45 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/18 14:42:01 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/19 16:07:17 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		lman_initialiser(t_lman **list_manager)
+int			main(int argc, char **argv)
 {
-	*list_manager = (t_lman *)ft_memalloc(sizeof(t_lman));
-	(*list_manager)->tail = NULL;
-	(*list_manager)->head = NULL;
-}
+	t_lman		*a;
+	t_lman		*b;
+	int			arg;
 
-int			main(int argc, const char **argv)
-{
-	t_stack		*tmp;
-	t_lman		*list_manager;
-	int			stack_size;
+	arg = 1;
 
-	stack_size = 1;
-	stack = (t_stack *)ft_memalloc(sizeof(t_stack));
-	lman_initialiser(&list_manager);
 	if (argc < 2)
 		ft_error();
 	else
 	{
-		while (stack_size != argc - 1)
-		{
-			if (tmp)
-				stack->prev = stack;
-			tmp = (t_stack *)ft_memalloc(sizeof(t_stack));
-			stack->value = ft_atoi(argv[stack_size]);
-			stack->next = tmp;
-			stack_size++;
-		}
+		lman_initialiser(&a);
+		lman_initialiser(&b);
+		list_maker(argc, argv, &a, arg);
 	}
-	return 0;
+	return (0);
 }

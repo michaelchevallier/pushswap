@@ -6,7 +6,7 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/26 16:28:30 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/14 15:20:12 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/19 16:28:46 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ ft_lenwords.c ft_error.c ft_itoa_base.c ft_itoa_baseuint.c\
 ft_strjoin_and_free.c ft_stringupper.c ft_ustrcat.c ft_ustrdel.c\
 ft_ustrjoin_and_free.c  ft_uustrjoin_and_free.c ft_ustrlen.c ft_ustrnew.c\
 ft_uustrcat.c ft_ustrsub.c ft_wcharlen.c ft_uputchar.c ft_uputstr.c\
-ft_uatoi.c ft_intmaxuatoi.c ft_uintmaxuatoi.c ft_ustrdup.c
-OBJ = objects/
+ft_uatoi.c ft_intmaxuatoi.c ft_uintmaxuatoi.c ft_ustrdup.c ft_intmaxatoi.c
+OBJ = 
 SRCO = $(SRC:.c=.o)
 HEADERS = includes
 CC = gcc

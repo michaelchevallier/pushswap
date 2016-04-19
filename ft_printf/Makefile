@@ -6,7 +6,7 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/26 14:43:40 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/14 16:14:18 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/19 16:21:22 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ SRC = ft_printf.c\
 	  precision_manager.c\
 	  flag_manager.c\
 	  width_manager.c
-OBJ = objects/
+OBJ = 
 SRCO = $(SRC:.c=.o)
 FLAG = -Wall -Werror -Wextra
 
