@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/19 16:06:57 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/19 17:38:32 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,7 @@ void				list_destroyer(t_lman **list);
 void				list_maker(int argc, char **argv, t_lman **a, int arg);
 void				error_checker(char *str);
 void				dual_checker(t_lman *a, int nbarg);
+void				print_list(t_lman **list);
+void				swap(t_lman **list);
+void				sswap(t_lman **a, t_lman **b);
+void				push(t_lman **a, t_lman **b);

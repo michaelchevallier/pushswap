@@ -6,7 +6,7 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/26 14:43:40 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/19 16:22:26 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/19 17:12:15 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ NAME = push_swap
 LIB = ft_printf/libftprintf.a
 SRC = main.c\
 	  ft_error.c\
-	  list_management.c
+	  list_management.c\
+	  action1.c\
+	  print_list.c
 OBJ = 
 SRCO = $(SRC:.c=.o)
 FLAG = -Wall -Werror -Wextra
