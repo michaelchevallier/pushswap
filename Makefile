@@ -6,7 +6,7 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/26 14:43:40 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/20 14:40:35 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/20 20:22:05 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,12 @@ SRC = main.c\
 	  list_management.c\
 	  swapandpush.c\
 	  rotate.c\
+	  reverse_rotate.c\
 	  sort_checker.c\
 	  solve.c\
+	  median_finder.c\
+	  short_path.c\
+	  retainer.c\
 	  print_list.c
 OBJ = 
 SRCO = $(SRC:.c=.o)

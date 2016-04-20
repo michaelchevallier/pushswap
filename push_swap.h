@@ -6,11 +6,24 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 14:37:04 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 20:38:29 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf/ft_printf.h"
+
+/* 1 = sa
+ * 2 = sb
+ * 3 = ss
+ * 4 = pa
+ * 5 = pb
+ * 6 = ra
+ * 7 = rb
+ * 8 = rr
+ * 9 = rra
+ * 10 = rrb
+ * 11 = rrr
+ */
 
 typedef struct		s_stack
 {
@@ -35,12 +48,24 @@ void				list_maker(int argc, char **argv, t_lman **a, int arg);
 void				error_checker(char *str);
 void				dual_checker(t_lman *a, int nbarg);
 void				print_list(t_lman **list);
-void				swap(t_lman **list);
-void				sswap(t_lman **a, t_lman **b);
-void				push(t_lman **a, t_lman **b);
-void				rotate(t_lman **list);
-void				rrotate(t_lman **a, t_lman **b);
-void				reverse_rotate(t_lman **list);
-void				rreverse_rotate(t_lman **a, t_lman **b);
+void				swapa(t_lman **list, t_lman **retain);
+void				swapb(t_lman **list,t_lman **retain);
+void				sswap(t_lman **a, t_lman **b, t_lman **retain);
+void				pusha(t_lman **a, t_lman **b, t_lman **retain);
+void				pushb(t_lman **a, t_lman **b, t_lman **retain);
+void				rotatea(t_lman **list, t_lman **retain);
+void				rotateb(t_lman **list, t_lman **retain);
+void				rrotate(t_lman **a, t_lman **b, t_lman **retain);
+void				reverse_rotatea(t_lman **list, t_lman **retain);
+void				reverse_rotateb(t_lman **list, t_lman **retain);
+void				rreverse_rotate(t_lman **a, t_lman **b, t_lman **retain);
+void				solve(t_lman **a, t_lman **b, t_lman **remain);
+void				splitter(t_lman **a, t_lman **b, t_lman **remain);
+void				sort(t_lman **list);
+void				reverse_sort(t_lman **a, t_lman **b, t_lman **remain);
 int					sort_checker(t_lman **list);
 int					reverse_sort_checker(t_lman **list);
+int					median_finder(t_lman **list);
+int					short_path(t_lman **list, int median);
+void				retainer(t_lman **retain, int value);
+void				print_actions(t_lman **retain);

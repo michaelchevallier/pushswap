@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:32:45 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 14:42:49 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 19:55:54 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int			main(int argc, char **argv)
 {
 	t_lman		*a;
 	t_lman		*b;
+	t_lman		*retain;
 	int			arg;
+	//int			median;
 
 	arg = 1;
 
@@ -26,14 +28,21 @@ int			main(int argc, char **argv)
 	{
 		lman_initialiser(&a);
 		lman_initialiser(&b);
+		lman_initialiser(&retain);
 		list_maker(argc, argv, &a, arg);
 		if (sort_checker(&a) == 1)
 			return (0);
-		ft_printf("sort: %d\n", sort_checker(&a));
+		else
+			solve(&a, &b, &retain);
+		/*ft_printf("sort: %d\n", sort_checker(&a));
 		ft_printf("sort: %d\n", reverse_sort_checker(&a));
+		median = median_finder(&a);
+		ft_printf("median %d\n", median);
+		printf("rot %d\n", short_path(&a, median));
 		print_list(&a);
 		print_list(&b);
 		push (&b ,&a);
+		printf("\nstack : %ld\n", b->stack_size);
 		print_list(&a);
 		print_list(&b);
 		swap (&a);
@@ -56,7 +65,7 @@ int			main(int argc, char **argv)
 		print_list(&b);
 		rrotate(&a, &b);
 		print_list(&a);
-		print_list(&b);
+		print_list(&b);*/
 	}
 	return (0);
 }

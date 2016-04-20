@@ -6,13 +6,13 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:18:10 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 14:21:49 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 20:29:11 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		rotate(t_lman **list)
+void		rotatea(t_lman **list, t_lman **retain)
 {
 	t_stack		*tmp;
 
@@ -25,31 +25,27 @@ void		rotate(t_lman **list)
 	tmp->prev = NULL;
 	(*list)->bot->prev = tmp;
 	(*list)->bot = tmp;
+	retainer(retain, 6);
 }
 
-void		rrotate(t_lman **a, t_lman **b)
-{
-	rotate(a);
-	rotate(b);
-}
-
-void		reverse_rotate(t_lman **list)
+void		rotateb(t_lman **list, t_lman **retain)
 {
 	t_stack		*tmp;
 
 	if((*list)->stack_size <= 1)
 		return ;
-	tmp = (*list)->bot;
-	(*list)->bot->next->prev = NULL;
-	(*list)->bot = (*list)->bot->next;
-	tmp->prev = (*list)->top;
-	tmp->next = NULL;
-	(*list)->top->next = tmp;
-	(*list)->top = tmp;
+	tmp = (*list)->top;
+	(*list)->top->prev->next = NULL;
+	(*list)->top = (*list)->top->prev;
+	tmp->next = (*list)->bot;
+	tmp->prev = NULL;
+	(*list)->bot->prev = tmp;
+	(*list)->bot = tmp;
+	retainer(retain, 7);
 }
 
-void		rreverse_rotate(t_lman **a, t_lman **b)
+void		rrotate(t_lman **a, t_lman **b, t_lman **retain)
 {
-	reverse_rotate(a);
-	reverse_rotate(b);
+	rotatea(a, retain);
+	rotateb(b, retain);
 }

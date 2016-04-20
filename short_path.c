@@ -1,49 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_checker.c                                     :+:      :+:    :+:   */
+/*   short_path.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/20 14:26:32 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 19:02:05 by mchevall         ###   ########.fr       */
+/*   Created: 2016/04/20 15:45:16 by mchevall          #+#    #+#             */
+/*   Updated: 2016/04/20 20:28:31 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			sort_checker(t_lman **list)
+int			short_path(t_lman **list, int median)
 {
-	t_stack		*tmp;
+	t_stack			*tmp;
+	t_lman			*ltmp;
+	int				rot;
+	int				reverse;
 
-	if ((*list)->stack_size == 0)
-		return (1);
-	if ((*list)->stack_size == 1)
-		return (1);
+	rot = 0;
+	reverse = 0;
 	tmp = (*list)->bot;
+	ltmp = (*list);
 	while (tmp->next)
 	{
-		if (tmp->value < tmp->next->value)
-			return (0);
+		if (tmp->value <= median)
+			break ;
+		reverse++;
 		tmp = tmp->next;
 	}
-	return (1);
-}
-
-int			reverse_sort_checker(t_lman **list)
-{
-	t_stack		*tmp;
-
-	if ((*list)->stack_size == 0)
-		return (1);
-	if ((*list)->stack_size == 1)
-		return (1);
-	tmp = (*list)->bot;
-	while (tmp->next)
+	tmp = (*list)->top;
+	while (tmp->prev)
 	{
-		if(tmp->value > tmp->next->value)
-			return (0);
-		tmp = tmp->next;
+		if (tmp->value <= median)
+			break ;
+		rot++;
+		tmp = tmp->prev;
 	}
-	return (1);
+	if (rot >= reverse)
+		return (-1);
+	else
+		return (1);
 }
