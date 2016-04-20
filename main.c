@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:32:45 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 14:23:14 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 14:42:49 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@ int			main(int argc, char **argv)
 		lman_initialiser(&a);
 		lman_initialiser(&b);
 		list_maker(argc, argv, &a, arg);
+		if (sort_checker(&a) == 1)
+			return (0);
+		ft_printf("sort: %d\n", sort_checker(&a));
+		ft_printf("sort: %d\n", reverse_sort_checker(&a));
 		print_list(&a);
 		print_list(&b);
 		push (&b ,&a);

@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 14:22:38 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 14:37:04 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,3 +42,5 @@ void				rotate(t_lman **list);
 void				rrotate(t_lman **a, t_lman **b);
 void				reverse_rotate(t_lman **list);
 void				rreverse_rotate(t_lman **a, t_lman **b);
+int					sort_checker(t_lman **list);
+int					reverse_sort_checker(t_lman **list);
