@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:32:45 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/19 18:18:19 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/20 14:23:14 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,19 +29,28 @@ int			main(int argc, char **argv)
 		list_maker(argc, argv, &a, arg);
 		print_list(&a);
 		print_list(&b);
-		push (&a ,&b);
+		push (&b ,&a);
+		print_list(&a);
+		print_list(&b);
+		swap (&a);
 		print_list(&a);
 		print_list(&b);
 		push (&b ,&a);
 		print_list(&a);
 		print_list(&b);
-		push (&b ,&a);
+		sswap (&a ,&b);
 		print_list(&a);
 		print_list(&b);
-		push (&b ,&a);
+		rotate (&a);
 		print_list(&a);
 		print_list(&b);
-		push (&a ,&b);
+		reverse_rotate(&b);
+		print_list(&a);
+		print_list(&b);
+		rreverse_rotate(&a, &b);
+		print_list(&a);
+		print_list(&b);
+		rrotate(&a, &b);
 		print_list(&a);
 		print_list(&b);
 	}

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action1.c                                          :+:      :+:    :+:   */
+/*   swapandpush.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/04/19 16:47:18 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/19 19:01:42 by mchevall         ###   ########.fr       */
+/*   Created: 2016/04/20 14:19:39 by mchevall          #+#    #+#             */
+/*   Updated: 2016/04/20 14:19:42 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,9 @@ void		swap(t_lman **list)
 
 	if ((*list)->stack_size <= 1)
 		return ;
-
-	print_list(list);
 	tmpvalue = (*list)->top->value;
 	(*list)->top->value = (*list)->top->prev->value;
 	(*list)->top->prev->value = tmpvalue;
-	print_list(list);
 }
 
 void		sswap(t_lman **a, t_lman **b)
