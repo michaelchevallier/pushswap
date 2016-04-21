@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:18:10 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 20:29:11 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:07:02 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		rotatea(t_lman **list, t_lman **retain)
 {
 	t_stack		*tmp;
 
-	if((*list)->stack_size <= 1)
+	if ((*list)->stack_size <= 1)
 		return ;
 	tmp = (*list)->top;
 	(*list)->top->prev->next = NULL;
@@ -32,7 +32,7 @@ void		rotateb(t_lman **list, t_lman **retain)
 {
 	t_stack		*tmp;
 
-	if((*list)->stack_size <= 1)
+	if ((*list)->stack_size <= 1)
 		return ;
 	tmp = (*list)->top;
 	(*list)->top->prev->next = NULL;

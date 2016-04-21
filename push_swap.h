@@ -6,24 +6,13 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 20:38:29 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:04:27 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf/ft_printf.h"
-
-/* 1 = sa
- * 2 = sb
- * 3 = ss
- * 4 = pa
- * 5 = pb
- * 6 = ra
- * 7 = rb
- * 8 = rr
- * 9 = rra
- * 10 = rrb
- * 11 = rrr
- */
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
+# include "ft_printf/ft_printf.h"
 
 typedef struct		s_stack
 {
@@ -39,6 +28,15 @@ typedef struct		s_lman
 	size_t			stack_size;
 }					t_lman;
 
+typedef struct		s_median
+{
+	int				median;
+	int				sup;
+	int				inf;
+	t_stack			*tmp;
+	t_stack			*tmp2;
+}					t_median;
+
 void				ft_error(void);
 void				lman_initialiser(t_lman **list);
 void				stack_maker(t_stack **stack, int value);
@@ -49,7 +47,7 @@ void				error_checker(char *str);
 void				dual_checker(t_lman *a, int nbarg);
 void				print_list(t_lman **list);
 void				swapa(t_lman **list, t_lman **retain);
-void				swapb(t_lman **list,t_lman **retain);
+void				swapb(t_lman **list, t_lman **retain);
 void				sswap(t_lman **a, t_lman **b, t_lman **retain);
 void				pusha(t_lman **a, t_lman **b, t_lman **retain);
 void				pushb(t_lman **a, t_lman **b, t_lman **retain);
@@ -70,3 +68,4 @@ int					short_path(t_lman **list, int median);
 int					reverse_short_path(t_lman **list, int median);
 void				retainer(t_lman **retain, int value);
 void				print_actions(t_lman **retain);
+#endif

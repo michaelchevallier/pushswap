@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:44:30 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/19 16:42:31 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 13:38:10 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		error_checker(char *str)
 	if (str[0] == '+' || str[0] == '-')
 	{
 		if (!str[1] || !ft_isdigit(str[1]))
-				ft_error();
+			ft_error();
 		i++;
 	}
 	while (str[i])
@@ -39,7 +39,7 @@ void		error_checker(char *str)
 	}
 	i = ft_intmaxatoi(str);
 	if (i > 2147483647 || i < -2147483648)
-		1;//ft_error();
+		ft_error();
 }
 
 void		dual_checker(t_lman *a, int nbarg)
@@ -49,27 +49,24 @@ void		dual_checker(t_lman *a, int nbarg)
 	int			i;
 	int			j;
 
-	i = 0;
-	j = 0;
+	i = -1;
+	j = -1;
 	tab = (int *)ft_memalloc(sizeof(int) * nbarg);
 	tmp = a->bot;
 	while (tmp && tab)
 	{
-		tab[i] = tmp->value;
-		i++;
+		tab[++i] = tmp->value;
 		tmp = tmp->next;
 	}
-	i = 0;
-	while (i < nbarg && tab)
+	i = -1;
+	while (++i < nbarg && tab)
 	{
 		j = i + 1;
-		while (j < nbarg)
+		while (++j < nbarg)
 		{
 			if (tab[i] == tab[j])
 				ft_error();
-			j++;
 		}
-		i++;
 	}
-	((tab) ? free(tab): 0);
+	((tab) ? free(tab) : 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:03:47 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 20:37:45 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:09:36 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,43 @@ void		print_list(t_lman **list)
 	ft_printf("%d\n", tmp->value);
 }
 
+void		print_actions2(t_stack *tmp)
+{
+	if (tmp->value == 7)
+		ft_printf("rb");
+	if (tmp->value == 8)
+		ft_printf("rr");
+	if (tmp->value == 9)
+		ft_printf("rra");
+	if (tmp->value == 10)
+		ft_printf("rrb");
+	if (tmp->value == 11)
+		ft_printf("rrr");
+	if (tmp->prev)
+		ft_printf(" ");
+}
+
 void		print_actions(t_lman **retain)
 {
-		t_stack			*tmp;
+	t_stack			*tmp;
 
-		tmp = (*retain)->top;
-		while (tmp)
-		{
-			if (tmp->value == 1)
+	tmp = (*retain)->top;
+	while (tmp)
+	{
+		if (tmp->value == 1)
 			ft_printf("sa");
-			if (tmp->value == 2)
+		if (tmp->value == 2)
 			ft_printf("sb");
-			if (tmp->value == 3)
+		if (tmp->value == 3)
 			ft_printf("ss");
-			if (tmp->value == 4)
+		if (tmp->value == 4)
 			ft_printf("pa");
-			if (tmp->value == 5)
+		if (tmp->value == 5)
 			ft_printf("pb");
-			if (tmp->value == 6)
+		if (tmp->value == 6)
 			ft_printf("ra");
-			if (tmp->value == 7)
-			ft_printf("rb");
-			if (tmp->value == 8)
-			ft_printf("rr");
-			if (tmp->value == 9)
-			ft_printf("rra");
-			if (tmp->value == 10)
-			ft_printf("rrb");
-			if (tmp->value == 11)
-			ft_printf("rrr");
-			if (tmp->prev)
-				ft_printf(" ");
-			tmp = tmp->prev;
-		}
-		ft_printf("\n");
+		print_actions2(tmp);
+		tmp = tmp->prev;
+	}
+	ft_printf("\n");
 }

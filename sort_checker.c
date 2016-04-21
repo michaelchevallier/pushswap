@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:26:32 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 19:02:05 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:06:58 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int			reverse_sort_checker(t_lman **list)
 	tmp = (*list)->bot;
 	while (tmp->next)
 	{
-		if(tmp->value > tmp->next->value)
+		if (tmp->value > tmp->next->value)
 			return (0);
 		tmp = tmp->next;
 	}

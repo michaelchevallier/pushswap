@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 15:45:16 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/20 20:28:31 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 14:08:36 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,7 @@ int			short_path(t_lman **list, int median)
 		rot++;
 		tmp = tmp->prev;
 	}
-	if (rot >= reverse)
-		return (-1);
-	else
-		return (1);
+	return ((rot >= reverse) ? -1 : 1);
 }
 
 int			reverse_short_path(t_lman **list, int median)
@@ -70,8 +67,5 @@ int			reverse_short_path(t_lman **list, int median)
 		rot++;
 		tmp = tmp->prev;
 	}
-	if (rot >= reverse)
-		return (-1);
-	else
-		return (1);
+	return ((rot >= reverse) ? -1 : 1);
 }
