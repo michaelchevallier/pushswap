@@ -32,7 +32,7 @@ void		print_actions(t_lman **retain)
 		t_stack			*tmp;
 
 		tmp = (*retain)->top;
-		while (tmp->prev)
+		while (tmp)
 		{
 			if (tmp->value == 1)
 			ft_printf("sa");

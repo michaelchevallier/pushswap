@@ -39,7 +39,7 @@ void		error_checker(char *str)
 	}
 	i = ft_intmaxatoi(str);
 	if (i > 2147483647 || i < -2147483648)
-		ft_error();
+		1;//ft_error();
 }
 
 void		dual_checker(t_lman *a, int nbarg)

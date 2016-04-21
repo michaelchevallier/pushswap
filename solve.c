@@ -15,30 +15,65 @@
 void			solve(t_lman **a, t_lman **b, t_lman **retain)
 {
 	size_t		tmp;
+	int			median;
 
-
+	median = median_finder(a);
 	tmp = 0;
-	while ((*a)->stack_size != tmp)
+	if ((*a)->stack_size <= 5)
 	{
-		tmp = (*a)->stack_size;
-		splitter(a, b, retain);
-		reverse_sort(a, b, retain);
-		printf("\n\n");
-		print_list(a);
-		print_list(b);
-		printf("\n\n");
+		while (sort_checker(a) != 1)
+		{
+			if ((*a)->top->value > (*a)->top->prev->value)
+			{
+				swapa(a, retain);
+			}
+			else
+				pushb(b, a, retain);
+		}
+		while ((*b)->stack_size > 0)
+			pusha(a, b, retain);
 	}
-	if ((*a)->top->value > (*a)->bot->value)
-		rotatea(a, retain);
-	while ((*b)->stack_size > 0)
-		pusha(a, b, retain);
-	printf("\n\n");
-	print_list(a);
-	print_list(b);
-	printf("\n\n");
+	else
+	{
+		splitter(a, b, retain);
+		if ((*a)->top->value > (*a)->bot->value)
+			rotatea(a, retain);
+		sort(a, b, retain);
+		while ((*b)->stack_size > 0)
+			pusha(a, b, retain);
+	}
 	print_actions(retain);
-	ft_printf("\n %ld", (*retain)->stack_size);
+	print_list(a);
+	ft_printf("%ld", (*retain)->stack_size);
+}
 
+void			sort(t_lman **a, t_lman **b, t_lman **retain)
+{
+	t_stack		*tmp;
+	intmax_t	maxvalue;
+
+	tmp = NULL;
+	maxvalue = -999999999999999;
+	while((*b)->stack_size > 0)
+	{
+		tmp = (*b)->top;
+		while (tmp)
+		{
+			if (maxvalue < tmp->value)
+				maxvalue = tmp->value;
+			tmp = tmp->prev;
+		}
+		if ((*b)->top->value == maxvalue)
+			pusha(a, b, retain);
+		else
+		{
+			if (reverse_short_path(b, maxvalue) == 1)
+				reverse_rotateb(b, retain);
+			else
+				rotateb(b, retain);
+		}
+		maxvalue = -999999999999999;
+	}
 }
 
 void			reverse_sort(t_lman **a, t_lman **b, t_lman **retain)
@@ -53,13 +88,13 @@ void			reverse_sort(t_lman **a, t_lman **b, t_lman **retain)
 		if ((*b)->top->value >= median)
 		{
 			pusha(a, b, retain);
-			if (i == 1)
+			if (i >= 1)
 			{
 				if (((*a)->stack_size > 1) &&
 						((*a)->top->value > (*a)->top->prev->value))
 					swapa(a, retain);
 			}
-			i = 1;
+			i++;
 		}
 		else if ((*b)->top->value < (*b)->top->prev->value)
 			swapb(b, retain);
@@ -67,10 +102,9 @@ void			reverse_sort(t_lman **a, t_lman **b, t_lman **retain)
 			rotateb(b, retain);
 		else
 			reverse_rotateb(b, retain);
-		printf("\n\n");
-		print_list(b);
-		printf("\n\n");
 	}
+	while ((*a)->top->value > (*b)->top->value)
+		pushb(b, a, retain);
 }
 
 void			splitter(t_lman **a, t_lman **b, t_lman **retain)
@@ -100,8 +134,4 @@ void			splitter(t_lman **a, t_lman **b, t_lman **retain)
 				reverse_rotatea(a, retain);
 		}
 	}
-	printf("\n\n");
-	print_list(a);
-	print_list(b);
-	printf("\n\n");
 }
