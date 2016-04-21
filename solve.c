@@ -38,6 +38,7 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 		splitter(a, b, retain);
 		if ((*a)->top->value > (*a)->bot->value)
 			rotatea(a, retain);
+		sort(b, a, retain);
 		sort(a, b, retain);
 		while ((*b)->stack_size > 0)
 			pusha(a, b, retain);
