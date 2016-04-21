@@ -6,13 +6,14 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:25:17 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 14:04:27 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 15:11:47 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "ft_printf/ft_printf.h"
+# define OPTIONS "lpnc"
 
 typedef struct		s_stack
 {
@@ -36,6 +37,14 @@ typedef struct		s_median
 	t_stack			*tmp;
 	t_stack			*tmp2;
 }					t_median;
+
+typedef struct		s_options
+{
+	int				list;
+	int				printoff;
+	int				nbop;
+	int				color;
+}					t_options;
 
 void				ft_error(void);
 void				lman_initialiser(t_lman **list);
@@ -67,5 +76,7 @@ int					median_finder(t_lman **list);
 int					short_path(t_lman **list, int median);
 int					reverse_short_path(t_lman **list, int median);
 void				retainer(t_lman **retain, int value);
-void				print_actions(t_lman **retain);
+void				print_actions(t_lman **retain, t_options **options);
+void				options_initializer(t_options **options);
+int					check_options(char **argv, t_options **options);
 #endif

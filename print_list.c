@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/19 17:03:47 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 14:09:36 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 15:11:35 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,13 @@ void		print_actions2(t_stack *tmp)
 		ft_printf(" ");
 }
 
-void		print_actions(t_lman **retain)
+void		print_actions(t_lman **retain, t_options **options)
 {
 	t_stack			*tmp;
 
 	tmp = (*retain)->top;
+	if ((*options)->color == 1)
+		ft_putstr("\033[32m");
 	while (tmp)
 	{
 		if (tmp->value == 1)
@@ -65,5 +67,7 @@ void		print_actions(t_lman **retain)
 		print_actions2(tmp);
 		tmp = tmp->prev;
 	}
+	if ((*options)->color == 1)
+		ft_putstr("\033[37m");
 	ft_printf("\n");
 }

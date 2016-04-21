@@ -6,11 +6,26 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:40:23 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 14:19:36 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:17:25 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void			solve_mini(t_lman **a, t_lman **retain)
+{
+	while (sort_checker(a) != 1)
+	{
+		if (reverse_sort_checker(a) == 1)
+			rotatea(a, retain);
+		else if ((*a)->top->value > (*a)->bot->value)
+			rotatea(a, retain);
+		else if ((*a)->top->value > (*a)->top->prev->value)
+			swapa(a, retain);
+		else
+			rotatea(a, retain);
+	}
+}
 
 void			solve(t_lman **a, t_lman **b, t_lman **retain)
 {
@@ -19,14 +34,10 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 
 	median = median_finder(a);
 	tmp = 0;
-	if ((*a)->stack_size <= 5)
-	{
-		while (sort_checker(a) != 1)
-			(((*a)->top->value > (*a)->top->prev->value) ? swapa(a, retain) :
-			pushb(b, a, retain));
-		while ((*b)->stack_size > 0)
-			pusha(a, b, retain);
-	}
+	if ((*a)->stack_size <= 3)
+		solve_mini(a, retain);
+	else if ((*a)->stack_size <= 5)
+		sort(b, a, retain);
 	else
 	{
 		splitter(a, b, retain);
