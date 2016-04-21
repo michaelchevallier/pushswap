@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:40:23 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 16:17:25 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/21 16:33:20 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 	tmp = 0;
 	if ((*a)->stack_size <= 3)
 		solve_mini(a, retain);
-	else if ((*a)->stack_size <= 5)
+	else if ((*a)->stack_size <= 20)
 		sort(b, a, retain);
 	else
 	{
