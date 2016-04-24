@@ -12,8 +12,10 @@
 
 #include "push_swap.h"
 
-void			solve_mini(t_lman **a, t_lman **retain)
+void			solve_mini(t_lman **a, t_lman **b, t_lman **retain, int n)
 {
+	if (n == 1)
+	{
 	while (sort_checker(a) != 1)
 	{
 		if (reverse_sort_checker(a) == 1)
@@ -25,6 +27,16 @@ void			solve_mini(t_lman **a, t_lman **retain)
 		else
 			rotatea(a, retain);
 	}
+	}
+	else if (n == 2)
+	{
+		splitter(a, b, retain);
+		if ((*a)->top->value < (*a)->top->prev->value)
+			swapa(a, retain);
+		((*a)->top->value < (*a)->bot->value ? reverse_rotatea(a, retain) :
+		rotatea(a, retain));
+		sort(a, b, retain);
+	}
 }
 
 void			solve(t_lman **a, t_lman **b, t_lman **retain)
@@ -35,15 +47,15 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 	median = median_finder(a);
 	tmp = 0;
 	if ((*a)->stack_size <= 3)
-		solve_mini(a, retain);
-	else if ((*a)->stack_size <= 20)
-		sort(b, a, retain);
+		solve_mini(a, b, retain, 1);
+	else if ((*a)->stack_size <= 5)
+		solve_mini(a, b, retain , 2);
 	else
 	{
 		splitter(a, b, retain);
 		if ((*a)->top->value > (*a)->bot->value)
 			rotatea(a, retain);
-		sort(b, a, retain);
+		reverse_sort(b, a, retain);
 		sort(a, b, retain);
 		while ((*b)->stack_size > 0)
 			pusha(a, b, retain);
@@ -76,6 +88,35 @@ void			sort(t_lman **a, t_lman **b, t_lman **retain)
 				rotateb(b, retain);
 		}
 		maxvalue = -999999999999999;
+	}
+}
+
+void			reverse_sort(t_lman **a, t_lman **b, t_lman **retain)
+{
+	t_stack		*tmp;
+	intmax_t	maxvalue;
+
+	tmp = NULL;
+	maxvalue = 999999999999999;
+	while ((*b)->stack_size > 0)
+	{
+		tmp = (*b)->top;
+		while (tmp)
+		{
+			if (maxvalue > tmp->value)
+				maxvalue = tmp->value;
+			tmp = tmp->prev;
+		}
+		if ((*b)->top->value == maxvalue)
+			pushb(a, b, retain);
+		else
+		{
+			if (reverse_short_path(b, maxvalue) == 1)
+				reverse_rotatea(b, retain);
+			else
+				rotatea(b, retain);
+		}
+		maxvalue = 999999999999999;
 	}
 }
 

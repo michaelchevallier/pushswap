@@ -1,4 +1,4 @@
-#**************************************************************************** #
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
@@ -6,28 +6,30 @@
 #    By: mchevall <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/01/26 14:43:40 by mchevall          #+#    #+#              #
-#    Updated: 2016/04/21 14:55:35 by mchevall         ###   ########.fr        #
+#    Updated: 2016/04/19 16:21:22 by mchevall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-LIB = ft_printf/libftprintf.a
-SRC = main.c\
-	  ft_error.c\
-	  list_management.c\
-	  swapandpush.c\
-	  rotate.c\
-	  reverse_rotate.c\
-	  sort_checker.c\
-	  solve.c\
-	  median_finder.c\
-	  short_path.c\
-	  retainer.c\
-	  options.c\
-	  print_list.c
+NAME = libftprintf.a
+LIB = libft/libft.a
+SRC = ft_printf.c\
+	  specifier_finder.c\
+	  format_specifier_manager.c\
+	  specifier_funcs.c\
+	  specifier_funcs2.c\
+	  specifier_funcs3.c\
+	  specifier_funcs4.c\
+	  specifier_funcs5.c\
+	  wchar_manager.c\
+	  funcs.c\
+	  funcs2.c\
+	  wstr_manager.c\
+	  precision_manager.c\
+	  flag_manager.c\
+	  width_manager.c
 OBJ = 
 SRCO = $(SRC:.c=.o)
-##FLAG = -Wall -Werror -Wextra
+FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 
@@ -35,15 +37,17 @@ all: $(NAME)
 	$(CC) -o $(addprefix $(OBJ),$@) -c $< $(FLAG)
 
 $(NAME): $(SRCO)
-	make -C ft_printf
-	gcc -o $(NAME) $(FLAG) $(SRC) $(LIB)
+	make -C libft
+	cp $(LIB) $(NAME)
+	ar r $(NAME) $(addprefix $(OBJ),$(SRCO))
+	ranlib $(NAME)
 
 clean:
-	make -C ft_printf clean
+	make -C libft clean
 	rm -f $(addprefix $(OBJ),$(SRCO))
 
 fclean: clean
-	make -C ft_printf fclean
+	make -C libft fclean
 	/bin/rm -f $(NAME)
 
 re: fclean all

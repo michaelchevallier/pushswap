@@ -29,7 +29,7 @@ SRC = ft_printf.c\
 	  width_manager.c
 OBJ = 
 SRCO = $(SRC:.c=.o)
-FLAG = -Wall -Werror -Wextra
+##FLAG = -Wall -Werror -Wextra
 
 all: $(NAME)
 
