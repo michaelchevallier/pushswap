@@ -29,12 +29,12 @@ SRC = ft_printf.c\
 	  width_manager.c
 OBJ = 
 SRCO = $(SRC:.c=.o)
-##FLAG = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -o $(addprefix $(OBJ),$@) -c $< $(FLAG)
+	$(CC) -o $(addprefix $(OBJ),$@) -c $< $(CFLAGS)
 
 $(NAME): $(SRCO)
 	make -C libft

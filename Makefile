@@ -27,7 +27,7 @@ SRC = main.c\
 	  print_list.c
 OBJ = 
 SRCO = $(SRC:.c=.o)
-##FLAG = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra
 
 all: $(NAME)
 

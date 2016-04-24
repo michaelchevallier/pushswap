@@ -33,7 +33,7 @@ OBJ =
 SRCO = $(SRC:.c=.o)
 HEADERS = includes
 CC = gcc
-##CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
