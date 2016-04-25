@@ -16,26 +16,31 @@ void			solve_mini(t_lman **a, t_lman **b, t_lman **retain, int n)
 {
 	if (n == 1)
 	{
-	while (sort_checker(a) != 1)
-	{
-		if (reverse_sort_checker(a) == 1)
-			rotatea(a, retain);
-		else if ((*a)->top->value > (*a)->bot->value)
-			rotatea(a, retain);
-		else if ((*a)->top->value > (*a)->top->prev->value)
-			swapa(a, retain);
-		else
-			rotatea(a, retain);
-	}
+		while (sort_checker(a) != 1)
+		{
+			if (reverse_sort_checker(a) == 1)
+				rotatea(a, retain);
+			else if ((*a)->top->value > (*a)->bot->value)
+				rotatea(a, retain);
+			else if ((*a)->top->value > (*a)->top->prev->value)
+				swapa(a, retain);
+			else
+				rotatea(a, retain);
+		}
 	}
 	else if (n == 2)
 	{
-		splitter(a, b, retain);
-		if ((*a)->top->value < (*a)->top->prev->value)
+		if ((*a)->top->value > (*a)->top->prev->value)
 			swapa(a, retain);
-		((*a)->top->value < (*a)->bot->value ? reverse_rotatea(a, retain) :
-		rotatea(a, retain));
-		sort(a, b, retain);
+		if (sort_checker(a) != 1)
+		{
+			splitter(a, b, retain);
+			if ((*a)->top->value < (*a)->top->prev->value)
+				swapa(a, retain);
+			((*a)->top->value < (*a)->bot->value ? reverse_rotatea(a, retain) :
+			 rotatea(a, retain));
+			sort(a, b, retain);
+		}
 	}
 }
 
@@ -52,11 +57,16 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 		solve_mini(a, b, retain , 2);
 	else
 	{
-		splitter(a, b, retain);
-		if ((*a)->top->value > (*a)->bot->value)
-			rotatea(a, retain);
-		reverse_sort(b, a, retain);
-		sort(a, b, retain);
+		if ((*a)->top->value > (*a)->top->prev->value)
+			swapa(a, retain);
+		if (sort_checker(a) != 1)
+		{
+			splitter(a, b, retain);
+			if ((*a)->top->value > (*a)->bot->value)
+				rotatea(a, retain);
+			reverse_sort(b, a, retain);
+			sort(a, b, retain);
+		}
 		while ((*b)->stack_size > 0)
 			pusha(a, b, retain);
 	}
