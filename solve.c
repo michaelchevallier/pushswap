@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/20 14:40:23 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 16:33:20 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/05/23 10:27:30 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,16 @@ void			solve_mini(t_lman **a, t_lman **b, t_lman **retain, int n)
 			else
 				rotatea(a, retain);
 		}
+		return ;
 	}
-	else if (n == 2)
+	((*a)->top->value > (*a)->top->prev->value) ? swapa(a, retain) : 0;
+	while (sort_checker(a) != 1)
 	{
-		if ((*a)->top->value > (*a)->top->prev->value)
-			swapa(a, retain);
-		if (sort_checker(a) != 1)
-		{
-			splitter(a, b, retain);
-			if ((*a)->top->value < (*a)->top->prev->value)
-				swapa(a, retain);
-			((*a)->top->value < (*a)->bot->value ? reverse_rotatea(a, retain) :
-			 rotatea(a, retain));
-			sort(a, b, retain);
-		}
+		splitter(a, b, retain);
+		((*a)->top->value < (*a)->top->prev->value) ? swapa(a, retain) : 0;
+		((*a)->top->value < (*a)->bot->value ? reverse_rotatea(a, retain) :
+		rotatea(a, retain));
+		sort(a, b, retain);
 	}
 }
 
@@ -54,7 +50,7 @@ void			solve(t_lman **a, t_lman **b, t_lman **retain)
 	if ((*a)->stack_size <= 3)
 		solve_mini(a, b, retain, 1);
 	else if ((*a)->stack_size <= 5)
-		solve_mini(a, b, retain , 2);
+		solve_mini(a, b, retain, 2);
 	else
 	{
 		if ((*a)->top->value > (*a)->top->prev->value)

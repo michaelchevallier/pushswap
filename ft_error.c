@@ -6,7 +6,7 @@
 /*   By: mchevall <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/04/18 13:44:30 by mchevall          #+#    #+#             */
-/*   Updated: 2016/04/21 13:38:10 by mchevall         ###   ########.fr       */
+/*   Updated: 2016/04/25 18:07:47 by mchevall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		error_checker(char *str)
 	}
 	i = ft_intmaxatoi(str);
 	if (i > 2147483647 || i < -2147483648)
-			ft_error();
+		ft_error();
 }
 
 void		dual_checker(t_lman *a, int nbarg)
